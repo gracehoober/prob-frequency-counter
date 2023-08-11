@@ -9,7 +9,11 @@ function canConstructWord(word, letters) {
   const letterFrequency = makeCounter(letters);
 
   for (let letter in wordFrequency) {
-    if (letterFrequency[letter] === undefined) {
+    // if (letterFrequency[letter] === undefined) {
+    //   return false;
+    // }
+    //TODO: check solution
+    if (!(letter in letterFrequency)) {
       return false;
     }
     if (wordFrequency[letter] > letterFrequency[letter]) {
@@ -18,6 +22,8 @@ function canConstructWord(word, letters) {
   }
   return true;
 }
+
+
 /** returns an obj of value to frequency */
 function makeCounter(string) {
   const counter = {};
