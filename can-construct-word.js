@@ -1,29 +1,40 @@
 "use strict";
 // add whatever parameters you deem necessary & write doc comment
+/**canConstructWord: returns a boolean based on
+ * frequency of letters in `word` string appearing
+ * in `letters` string
+ */
 function canConstructWord(word, letters) {
   const wordFrequency = makeCounter(word);
   const letterFrequency = makeCounter(letters);
 
-  for(let letter in wordFrequency){
-    if(letterFrequency[letter] === undefined){
+  for (let letter in wordFrequency) {
+    // if (letterFrequency[letter] === undefined) {
+    //   return false;
+    // }
+    //TODO: check solution
+    if (!(letter in letterFrequency)) {
       return false;
     }
-    if(wordFrequency[letter] > letterFrequency[letter] ){
+    if (wordFrequency[letter] > letterFrequency[letter]) {
       return false;
     }
   }
   return true;
 }
+
+
 /** returns an obj of value to frequency */
-function makeCounter(string){
+function makeCounter(string) {
   const counter = {};
-  for(let char of string){
+
+  for (let char of string) {
     const current = counter[char] || 0;
     counter[char] = current + 1;
   }
   return counter;
 }
-console.log(makeCounter("aa"))
+console.log(makeCounter("aa"));
 console.log(makeCounter("abcd"))
 /* Problem solving
 I: two strings
